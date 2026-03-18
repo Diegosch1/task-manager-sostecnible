@@ -1,0 +1,7 @@
+# Local credentials
+task-manager-backend/src/main/resources/application-local.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+.vscode/
