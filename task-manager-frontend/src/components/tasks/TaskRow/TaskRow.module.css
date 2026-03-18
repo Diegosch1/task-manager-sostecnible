@@ -1,0 +1,247 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--accent);
+  background: var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  overflow: hidden;
+  animation: expand 0.15s ease;
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+}
+
+.titleInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.titleInput:focus {
+  outline: none;
+}
+
+.titleInput::placeholder {
+  color: var(--text-placeholder);
+  font-weight: 400;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.select {
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.select:focus {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.dateInput {
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  width: 160px;
+}
+
+.dateInput:focus {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.descRow {
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+}
+
+.descInput {
+  flex: 1;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  resize: none;
+  min-height: 60px;
+  max-height: 120px;
+  line-height: 1.5;
+}
+
+.descInput:focus {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.descInput::placeholder {
+  color: var(--text-placeholder);
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--bg-secondary);
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-placeholder);
+  display: flex;
+  gap: 12px;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.kbd kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.cancelBtn {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.cancelBtn:hover {
+  background: var(--bg-hover);
+}
+
+.saveBtn {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: var(--accent-hover);
+}
+
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 11px;
+  color: var(--danger);
+  padding: 0 14px 6px;
+}
+
+@media (max-width: 768px) {
+  /* Stack priority and date below title */
+  .mainRow {
+    flex-wrap: wrap;
+  }
+
+  .titleInput {
+    width: 100%;
+    flex: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Hide dividers on mobile — they don't make sense in wrapped layout */
+  .divider {
+    display: none;
+  }
+
+  .select {
+    flex: 1;
+    padding: 6px 10px;
+    border-right: 1px solid var(--border);
+  }
+
+  .dateInput {
+    flex: 1;
+    width: auto;
+    padding: 6px 10px;
+  }
+
+  /* Hide keyboard shortcuts on mobile — no physical keyboard */
+  .hint {
+    display: none;
+  }
+
+  /* Footer becomes simpler — just the action buttons */
+  .footer {
+    justify-content: flex-end;
+  }
+
+  .descInput {
+    font-size: 14px; /* slightly larger for touch */
+  }
+
+  .mainRow > div:not(.divider) {
+    flex: 1;
+  }
+}
