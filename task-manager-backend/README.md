@@ -28,7 +28,7 @@ API RESTful desarrollada con **Java 21** y **Spring Boot 4**, siguiendo los prin
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/Diegosch1/task-manager-sostecnible
 cd task-manager-backend
 ```
 
@@ -52,7 +52,7 @@ spring:
     password: YOUR_PASSWORD_HERE
 ```
 
-> Si tu usuario root no tiene contraseña (configuración por defecto de XAMPP), deja el campo `password` como `""`.
+> Si tu usuario root no tiene contraseña, deja el campo `password` como `""`.
 
 ### 4. Ejecutar el proyecto
 
@@ -66,7 +66,7 @@ En Windows sin bash:
 mvnw.cmd spring-boot:run
 ```
 
-El servidor arrancará en `http://localhost:8080`.
+El servidor arrancará en **http://localhost:8080**.
 
 Spring Boot creará automáticamente la tabla `tasks` en la base de datos al iniciar por primera vez.
 
@@ -287,3 +287,27 @@ DELETE /api/tasks/{id}
 
 - El campo `title` es **obligatorio**.
 - El campo `priority` es **obligatorio**.
+
+---
+## Ejecución de pruebas
+```bash
+./mvnw test
+```
+
+En Windows sin bash:
+```bash
+mvnw.cmd spring-boot:run
+```
+
+Resultado esperado:
+```
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+```
+
+### Cobertura de pruebas
+
+| Capa | Archivo | Pruebas |
+|------|---------|---------|
+| Application | `TaskServiceTest` | 14 pruebas — lógica de negocio, validaciones, operaciones CRUD |
+| Infrastructure | `TaskControllerTest` | 10 pruebas — códigos HTTP, delegación al caso de uso |
