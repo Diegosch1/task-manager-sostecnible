@@ -4,7 +4,7 @@ import com.sostecnible.taskmanager.application.port.in.TaskUseCase;
 import com.sostecnible.taskmanager.application.port.out.TaskRepositoryPort;
 import com.sostecnible.taskmanager.domain.model.Task;
 import com.sostecnible.taskmanager.domain.model.TaskStatus;
-// import com.sostecnible.taskmanager.domain.model.Priority;
+import com.sostecnible.taskmanager.domain.model.Priority;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,8 +49,8 @@ public class TaskService implements TaskUseCase {
     }
 
     @Override
-    public List<Task> findAll(TaskStatus status, String title, String sortBy) {
-        return taskRepositoryPort.findAll(status, title, sortBy);
+    public List<Task> findAll(TaskStatus status, String title, String sortBy, Priority priority) {
+        return taskRepositoryPort.findAll(status, title, sortBy, priority);
     }
 
     // Lógica de negocio: validación de descripción

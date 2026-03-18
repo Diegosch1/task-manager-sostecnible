@@ -197,10 +197,10 @@ class TaskServiceTest {
     @Test
     @DisplayName("Should return all tasks without filters")
     void findAll_withNoFilters_shouldReturnAllTasks() {
-        when(taskRepositoryPort.findAll(null, null, null))
+        when(taskRepositoryPort.findAll(null, null, null, null))
             .thenReturn(List.of(validTask));
 
-        List<Task> result = taskService.findAll(null, null, null);
+        List<Task> result = taskService.findAll(null, null, null, null);
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getTitle()).isEqualTo("Implement authentication");
@@ -209,10 +209,10 @@ class TaskServiceTest {
     @Test
     @DisplayName("Should return filtered tasks by status")
     void findAll_withStatusFilter_shouldReturnFilteredTasks() {
-        when(taskRepositoryPort.findAll(TaskStatus.PENDING, null, null))
+        when(taskRepositoryPort.findAll(TaskStatus.PENDING, null, null, null))
             .thenReturn(List.of(validTask));
 
-        List<Task> result = taskService.findAll(TaskStatus.PENDING, null, null);
+        List<Task> result = taskService.findAll(TaskStatus.PENDING, null, null, null);
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getStatus()).isEqualTo(TaskStatus.PENDING);
@@ -221,10 +221,10 @@ class TaskServiceTest {
     @Test
     @DisplayName("Should return empty list when no tasks match the filter")
     void findAll_withStatusFilter_shouldReturnEmptyListWhenNoMatch() {
-        when(taskRepositoryPort.findAll(TaskStatus.COMPLETED, null, null))
+        when(taskRepositoryPort.findAll(TaskStatus.COMPLETED, null, null, null))
             .thenReturn(List.of());
 
-        List<Task> result = taskService.findAll(TaskStatus.COMPLETED, null, null);
+        List<Task> result = taskService.findAll(TaskStatus.COMPLETED, null, null, null);
 
         assertThat(result).isEmpty();
     }

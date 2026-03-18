@@ -2,6 +2,7 @@ package com.sostecnible.taskmanager.application.port.out;
 
 import com.sostecnible.taskmanager.domain.model.Task;
 import com.sostecnible.taskmanager.domain.model.TaskStatus;
+import com.sostecnible.taskmanager.domain.model.Priority;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,7 @@ public interface TaskRepositoryPort {
 
     Optional<Task> findById(Long id);
 
-    List<Task> findAll(TaskStatus status, String title, String sortBy);
+    List<Task> findAll(TaskStatus status, String title, String sortBy, Priority priority);
 
     boolean existsById(Long id);
 }

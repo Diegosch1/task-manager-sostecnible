@@ -1,19 +1,22 @@
 package com.sostecnible.taskmanager.infrastructure.persistence.specification;
 
 import com.sostecnible.taskmanager.domain.model.TaskStatus;
+import com.sostecnible.taskmanager.domain.model.Priority;
 import com.sostecnible.taskmanager.infrastructure.persistence.entity.TaskEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 public class TaskSpecification {
 
     public static Specification<TaskEntity> hasStatus(TaskStatus status) {
-        return (root, query, cb) ->
-            status == null ? null : cb.equal(root.get("status"), status);
+        return (root, query, cb) -> status == null ? null : cb.equal(root.get("status"), status);
     }
 
     public static Specification<TaskEntity> titleContains(String title) {
-        return (root, query, cb) ->
-            (title == null || title.isBlank()) ? null :
-            cb.like(cb.lower(root.get("title")), "%" + title.toLowerCase() + "%");
+        return (root, query, cb) -> (title == null || title.isBlank()) ? null
+                : cb.like(cb.lower(root.get("title")), "%" + title.toLowerCase() + "%");
+    }
+
+    public static Specification<TaskEntity> hasPriority(Priority priority) {
+        return (root, query, cb) -> priority == null ? null : cb.equal(root.get("priority"), priority);
     }
 }

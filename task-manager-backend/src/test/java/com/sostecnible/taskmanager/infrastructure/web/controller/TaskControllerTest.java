@@ -1,8 +1,8 @@
 package com.sostecnible.taskmanager.infrastructure.web.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+// import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.SerializationFeature;
+// import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.sostecnible.taskmanager.application.port.in.TaskUseCase;
 import com.sostecnible.taskmanager.domain.model.Priority;
 import com.sostecnible.taskmanager.domain.model.Task;
@@ -97,10 +97,10 @@ class TaskControllerTest {
     @Test
     @DisplayName("GET /api/tasks — should return 200 with list of tasks")
     void findAll_shouldReturn200WithTaskList() {
-        when(taskUseCase.findAll(null, null, null)).thenReturn(List.of(sampleTask));
+        when(taskUseCase.findAll(null, null, null, null)).thenReturn(List.of(sampleTask));
         when(taskDtoMapper.toDto(any(Task.class))).thenReturn(null);
 
-        ResponseEntity<?> response = taskController.findAll(null, null, null);
+        ResponseEntity<?> response = taskController.findAll(null, null, null, null);
 
         assertThat(response.getStatusCode().value()).isEqualTo(200);
     }
@@ -108,9 +108,9 @@ class TaskControllerTest {
     @Test
     @DisplayName("GET /api/tasks — should return empty list when no tasks exist")
     void findAll_withNoTasks_shouldReturnEmptyList() {
-        when(taskUseCase.findAll(null, null, null)).thenReturn(List.of());
+        when(taskUseCase.findAll(null, null, null, null)).thenReturn(List.of());
 
-        ResponseEntity<?> response = taskController.findAll(null, null, null);
+        ResponseEntity<?> response = taskController.findAll(null, null, null, null);
 
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat((List<?>) response.getBody()).isEmpty();

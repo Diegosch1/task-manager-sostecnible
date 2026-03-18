@@ -14,7 +14,6 @@ const TaskCard = ({ task }) => {
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const isCompleted = task.status === 'COMPLETED'
-  const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && !isCompleted
 
   const handleToggle = (e) => {
     e.stopPropagation()
@@ -61,9 +60,13 @@ const TaskCard = ({ task }) => {
           <Badge value={task.priority} />
           <Badge value={task.status} />
           {task.dueDate && (
-            <span className={`${styles.dueDate} ${isOverdue ? styles.overdue : ''}`}>
-              {isOverdue ? '⚠ ' : ''}
-              {format(new Date(task.dueDate), 'MMM d, yyyy')}
+            <span className={styles.dueDate}>
+              {format(new Date(task.dueDate), 'MMM d, yyyy, hh:mm a')}
+            </span>
+          )}
+          {task.createdAt && (
+            <span className={styles.createdAt}>
+              Created {format(new Date(task.createdAt), 'MMM d, yyyy, hh:mm a')}
             </span>
           )}
         </div>

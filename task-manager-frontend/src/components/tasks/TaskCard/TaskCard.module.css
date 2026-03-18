@@ -162,3 +162,9 @@
   white-space: nowrap;
   padding: 0 4px;
 }
+
+.createdAt {
+  font-size: 11px;
+  color: var(--text-placeholder);
+  font-family: var(--font-mono);
+}

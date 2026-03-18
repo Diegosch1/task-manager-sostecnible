@@ -2,6 +2,7 @@ package com.sostecnible.taskmanager.infrastructure.web.controller;
 
 import com.sostecnible.taskmanager.application.port.in.TaskUseCase;
 import com.sostecnible.taskmanager.domain.model.TaskStatus;
+import com.sostecnible.taskmanager.domain.model.Priority;
 import com.sostecnible.taskmanager.infrastructure.web.dto.TaskRequestDto;
 import com.sostecnible.taskmanager.infrastructure.web.dto.TaskResponseDto;
 import com.sostecnible.taskmanager.infrastructure.web.mapper.TaskDtoMapper;
@@ -60,8 +61,9 @@ public class TaskController {
     public ResponseEntity<List<TaskResponseDto>> findAll(
             @RequestParam(required = false) TaskStatus status,
             @RequestParam(required = false) String title,
-            @RequestParam(required = false) String sortBy) {
-        List<TaskResponseDto> tasks = taskUseCase.findAll(status, title, sortBy)
+            @RequestParam(required = false) String sortBy,
+            @RequestParam(required = false) Priority priority) {
+        List<TaskResponseDto> tasks = taskUseCase.findAll(status, title, sortBy, priority)
             .stream()
             .map(taskDtoMapper::toDto)
             .toList();

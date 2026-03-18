@@ -76,9 +76,7 @@ const TaskRow = ({ task = null, onDone }) => {
     description: form.description.trim(),
     priority: form.priority,
     status: form.status,
-    dueDate: form.dueDate
-      ? new Date(form.dueDate).toISOString().slice(0, 19)
-      : null,
+    dueDate: form.dueDate ? form.dueDate.slice(0, 19) : null,
   })
 
   const handleSave = () => {
