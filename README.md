@@ -109,7 +109,7 @@ La aplicación abrirá en `http://localhost:5173`.
 
 ---
 
-## Ejecución de pruebas
+## Ejecución de pruebas del backend
 
 Las pruebas unitarias cubren la lógica de negocio del backend:
 
@@ -139,7 +139,26 @@ BUILD SUCCESS
 | Infrastructure | `TaskControllerTest` | 10 pruebas — códigos HTTP, delegación al caso de uso |
 
 ---
+### Pruebas del frontend
+```bash
+cd task-manager-frontend
+npm run test
+```
 
+Resultado esperado:
+```
+Test Files  3 passed (3)
+     Tests  24 passed (24)
+```
+
+### Cobertura de pruebas frontend
+
+| Archivo | Pruebas |
+|---------|---------|
+| `useTaskStore.test.js` | 12 pruebas — filtros, creación, edición, sidebar |
+| `Badge.test.jsx` | 6 pruebas — renderizado de prioridades y estados |
+| `TaskList.test.jsx` | 6 pruebas — estados de carga, error, vacío y con datos |
+---
 ## Arquitectura del backend
 
 El backend sigue **Clean Architecture**, con dependencias que siempre apuntan hacia adentro:
