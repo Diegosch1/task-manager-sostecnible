@@ -66,7 +66,7 @@ const TaskCard = ({ task }) => {
           )}
           {task.createdAt && (
             <span className={styles.createdAt}>
-              Created {format(new Date(task.createdAt), 'MMM d, yyyy, hh:mm a')}
+              - Created {format(new Date(task.createdAt), 'MMM d, yyyy, hh:mm a')}
             </span>
           )}
         </div>
